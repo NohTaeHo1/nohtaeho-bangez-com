@@ -12,6 +12,6 @@ import java.time.LocalDate;
 public class HomeController {
     @GetMapping("/")
     public Flux<Object> home() {
-        return Flux.concat(Mono.just("Hello World"), Mono.just(LocalDate.now()));
+        return Flux.concat(Flux.just("안녕", "Hello World"), Mono.just(LocalDate.now()));
     }
 }
