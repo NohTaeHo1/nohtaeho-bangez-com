@@ -3,12 +3,15 @@ package com.bangez.property;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.time.LocalDate;
 
 @RestController
 public class HomeController {
     @GetMapping("/")
-    public Mono<String> home() {
-        return Mono.just("Hello World");
+    public Flux<Object> home() {
+        return Flux.concat(Mono.just("Hello World"), Mono.just(LocalDate.now()));
     }
 }
